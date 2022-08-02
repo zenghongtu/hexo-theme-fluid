@@ -7,13 +7,13 @@ page.banner_img_height = theme.index.banner_img_height
 page.banner_mask_alpha = theme.index.banner_mask_alpha
 %>
 
-<% page.posts.each(function (post) { %>
+<% page.posts.each(function (post,idx) { %>
   <div class="row mx-auto index-card">
     <% var post_url = url_for(post.path), index_img = post.index_img || theme.post.default_index_img %>
     <% if (index_img) { %>
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="<%= post_url %>" target="<%- theme.index.post_url_target %>">
-          <img src="<%= url_for(index_img) %>" alt="<%= post.title %>">
+          <img src="<%= url_for(index_img) %>?rand=<%= idx+1 %>" alt="<%= post.title %>">
         </a>
       </div>
     <% } %>
